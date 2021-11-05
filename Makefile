@@ -1,4 +1,4 @@
-.PHONY: tests CI-tests
+.PHONY: tests
 tests:
 	php bin/console cache:clear --env=test
 	symfony console doctrine:database:drop --if-exists -f --env=test
@@ -7,6 +7,7 @@ tests:
 	symfony console doctrine:fixtures:load -n --env=test
 	symfony php bin/phpunit --testdox --coverage-html coverage
 
+.PHONY: CI-tests
 CI-tests:
 	php bin/console cache:clear --env=test
 	php bin/console doctrine:database:drop --if-exists -f --env=test
