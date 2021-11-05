@@ -7,6 +7,9 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
@@ -32,7 +35,7 @@ class Kernel extends BaseKernel
         if (is_file(\dirname(__DIR__).'/config/routes.yaml')) {
             $routes->import('../config/routes.yaml');
         } else {
-            $routes->import('../config/{routes}.php'); //@codeCoverageIgnore
+            $routes->import('../config/{routes}.php');
         }
     }
 }
