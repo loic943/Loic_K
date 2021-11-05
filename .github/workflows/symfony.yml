@@ -35,4 +35,4 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
       - name: Tests
-        run: make CI-test
+        run: make CI
