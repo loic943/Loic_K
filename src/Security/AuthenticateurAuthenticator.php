@@ -28,7 +28,9 @@ class AuthenticateurAuthenticator extends AbstractLoginFormAuthenticator
     {
         $this->urlGenerator = $urlGenerator;
     }
-
+    /**
+     * @codeCoverageIgnore
+     **/
     public function authenticate(Request $request): PassportInterface
     {
         $email = $request->request->get('email', '');
@@ -44,6 +46,9 @@ class AuthenticateurAuthenticator extends AbstractLoginFormAuthenticator
         );
     }
 
+    /**
+     * @codeCoverageIgnore
+     **/
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
