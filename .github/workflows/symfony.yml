@@ -36,4 +36,4 @@ jobs:
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DATABASE_URL: mysql://root:password@127.0.0.1:3306/loic_k?serverVersion=5.7
-      run: php bin/phpunit
+      run: "vendor/bin/phpunit --coverage-clover=coverage.xml"
