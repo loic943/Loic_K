@@ -22,7 +22,9 @@ class EmailVerifier
         $this->mailer = $mailer;
         $this->entityManager = $manager;
     }
-
+    /**
+     * @codeCoverageIgnore
+     **/
     public function sendEmailConfirmation(string $verifyEmailRouteName, UserInterface $user, TemplatedEmail $email): void
     {
         $signatureComponents = $this->verifyEmailHelper->generateSignature(
@@ -43,6 +45,7 @@ class EmailVerifier
 
     /**
      * @throws VerifyEmailExceptionInterface
+     * @codeCoverageIgnore
      */
     public function handleEmailConfirmation(Request $request, UserInterface $user): void
     {
