@@ -35,5 +35,5 @@ jobs:
         touch data/database.sqlite
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
-        DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
-      run: vendor/bin/phpunit
+        DATABASE_URL: mysql://root:password@127.0.0.1:3306/loic_k?serverVersion=5.7
+      run: symfony php bin/phpunit
