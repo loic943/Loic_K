@@ -9,9 +9,9 @@ tests:
 
 .PHONY: CI
 CI:
-	vendor/bin/console cache:clear --env=test
-	vendor/bin/console doctrine:database:drop --if-exists -f --env=test
-	vendor/bin/console doctrine:database:create --env=test
-	vendor/bin/console doctrine:schema:update -f --env=test
-	vendor/bin/console doctrine:fixtures:load -n --env=test
-	vendor/bin/phpunit --testdox --coverage-html coverage
+	php bin/console cache:clear --env=test
+	php bin/console doctrine:database:drop --if-exists -f --env=test
+	php bin/console doctrine:database:create --env=test
+	php bin/console doctrine:schema:update -f --env=test
+	php bin/console doctrine:fixtures:load -n --env=test
+	php bin/phpunit --testdox --coverage-html coverage
