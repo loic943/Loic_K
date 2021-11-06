@@ -37,9 +37,10 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
-
       - name: Composer Install
         run: composer install --no-progress --prefer-dist --optimize-autoloader
+      - name: Install Symfony CLI
+        run: composer require symfony/console
       - name: Run Migration & Load Fixtures
         run: |
           composer require --dev symfony/orm-pack
