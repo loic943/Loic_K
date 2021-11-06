@@ -49,4 +49,4 @@ jobs:
         env:
           DATABASE_URL: mysql://root:password@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/loic_k
       - name: test databases
-        run: mysql -h 127.0.0.1 -P ${{ job.services.mysql.ports['3306'] }} -u root -ppassword -e 'SELECT * FROM user.loic_k_test;'
+        run: mysql -h 127.0.0.1 -P ${{ job.services.mysql.ports['3306'] }} -u root -ppassword -e 'SELECT * FROM loic_k_test;'
