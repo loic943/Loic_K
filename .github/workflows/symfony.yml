@@ -38,7 +38,7 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
       - name: Composer Install
-        run: composer install --no-progess --prefer-dist --optimize-autoloader
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
       - name: Run Migration & Load Fixtures
         run: |
           composer require --dev symfony/orm-pack
