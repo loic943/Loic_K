@@ -13,7 +13,7 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_ROOT_PASSWORD: 'Password123!'
+          MYSQL_ROOT_PASSWORD: 'Password'
         ports:
           - 3306:3306
     steps:
@@ -37,4 +37,4 @@ jobs:
       - name: Composer Install
         run: composer install
       - name: Tests
-        run: make CI
+        run: mysql -h 127.0.0.1 --port 3306 -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS loic_k_test;'
