@@ -53,5 +53,4 @@ jobs:
       - name: test databases
         run: mysql -h 127.0.0.1 -P ${{ job.services.mysql.ports['3306'] }} -u root -ppassword -e 'USE loic_k_test; SELECT * FROM user;'
       - name: Symfony console check
-        run: symfony check:requirements
-         
+        run: php bin/console -V
