@@ -55,4 +55,4 @@ jobs:
       - name: Symfony console check
         run: php bin/console -V
       - name: Run Tests
-        run: php bin/phpunit --testdox
+        run: symfony
