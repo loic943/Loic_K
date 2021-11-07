@@ -58,4 +58,5 @@ jobs:
         run: php bin phpunit --coverage-clover=coverage.xml
       - name: Codecov
         uses: codecov/codecov-action@v2.1.0
-
+        with:
+          token: "bf364162-9acf-47f1-924f-2aa5c93f5d87"
