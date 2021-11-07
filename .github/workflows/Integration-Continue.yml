@@ -1,0 +1,56 @@
+name: Continuous Integration
+on: [push]
+jobs:
+  ci:
+    name: Continuous Integration
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      fail-fast: false
+      matrix:
+        operating-system: [ubuntu-latest]
+        php-versions: ['8.0']
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: false
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: loic_k
+        ports:
+          - 3306/tcp
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup PHP, with composer and extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, dom, filter, gd
+          coverage: xdebug
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Cache composer dependencies
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+      - name: Composer Install
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+      - name: Run Migration & Load Fixtures
+        run: |
+          composer require --dev symfony/orm-pack
+          php bin/console doctrine:database:drop --if-exists -f --env=test
+          php bin/console doctrine:database:create --env=test
+          php bin/console doctrine:schema:update --force  --env=test || echo "No migrations found or schema update failed"
+          php bin/console doctrine:fixtures:load -n --env=test
+        env:
+          DATABASE_URL: mysql://root:password@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/loic_k
+      - name: Run Tests
+        run: php bin phpunit --coverage-clover=coverage.xml
+      - name: Codecov
+        env:
+          CODECOV_TOKEN: "e1c51754-dad0-464d-88a0-99c49c60ea7e"
+        run: "bash <(curl -s https://codecov.io/bash) || true"
