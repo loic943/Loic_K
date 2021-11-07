@@ -27,6 +27,15 @@
         <include>
             <directory suffix=".php">src</directory>
         </include>
+        <exclude>
+            <directory>src/DataFixtures</directory>
+            <directory>src/Mailer</directory>
+            <file>src/Kernel.php</file>
+        </exclude>
+        <report>
+            <clover outputFile="var/coverage/clover.xml"/>
+            <html outputDirectory="coverage/" lowUpperBound="35" highLowerBound="70"/>
+        </report>
     </coverage>
 
     <listeners>
