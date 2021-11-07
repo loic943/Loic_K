@@ -56,7 +56,7 @@ jobs:
         run: php bin/console -V
       - name: Run Tests
         run: php bin phpunit --coverage-clover=coverage.xml
-       - name: "Partage code coverage à Codecov.io"
+      - name: "Partage code coverage à Codecov.io"
         env:
           CODECOV_TOKEN: "bf364162-9acf-47f1-924f-2aa5c93f5d87"
         run: "bash <(curl -s https://codecov.io/bash) || true"
