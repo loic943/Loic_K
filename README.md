@@ -1,4 +1,4 @@
 # Site de Loic K
- ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/loic943/Loic_K/Continuous%20Integration?label=CI&style=plastic)
+[![Integration Continue](https://github.com/loic943/Loic_K/actions/workflows/Integration-Continue.yml/badge.svg?branch=master)](https://github.com/loic943/Loic_K/actions/workflows/Integration-Continue.yml)
 
 Test de site internet avec Symfony 5
