@@ -55,7 +55,7 @@ jobs:
       - name: Symfony console check
         run: php bin/console -V
       - name: Run Tests
-        run: php bin phpunit --coverage-clover=coverage.xml
+        run: php bin phpunit --testdox
       - name: Codecov
         uses: codecov/codecov-action@v2.1.0
         with:
