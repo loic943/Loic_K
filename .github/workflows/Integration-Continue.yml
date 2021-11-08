@@ -54,3 +54,9 @@ jobs:
         env:
           CODECOV_TOKEN: "e1c51754-dad0-464d-88a0-99c49c60ea7e"
         run: "bash <(curl -s https://codecov.io/bash) || true"
+      - name: Test codecov
+        script:
+          - vendor/bin/phpunit --coverage-clover coverage.xml
+        after_success:
+          - bash <(curl -s https://codecov.io/bash)
+          
