@@ -39,8 +39,6 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Composer Install
         run: composer install --no-progress --prefer-dist --optimize-autoloader
-      - name: Run phpstan
-        uses: php-actions/phpstan@v2
       - name: Run Migration & Load Fixtures
         run: |
           composer require --dev symfony/orm-pack
@@ -50,6 +48,8 @@ jobs:
           php bin/console doctrine:fixtures:load -n --env=test
         env:
           DATABASE_URL: mysql://root:password@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/loic_k
+      - name: Run PhpStan
+        run: phpstan analyse src --level max
       - name: Run Tests
         run: php bin/phpunit --coverage-clover coverage.xml
 
