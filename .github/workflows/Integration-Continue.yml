@@ -42,10 +42,10 @@ jobs:
       - name: Run Migration & Load Fixtures
         run: |
           composer require --dev symfony/orm-pack
-          php bin/console doctrine:database:drop --if-exists -f --env=test
-          php bin/console doctrine:database:create --env=test
-          php bin/console doctrine:schema:update --force  --env=test || echo "No migrations found or schema update failed"
-          php bin/console doctrine:fixtures:load -n --env=test
+          php bin/console doctrine:database:drop --if-exists -f
+          php bin/console doctrine:database:create
+          php bin/console doctrine:schema:update --force || echo "No migrations found or schema update failed"
+          php bin/console doctrine:fixtures:load -n
         env:
           DATABASE_URL: mysql://root:password@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/loic_k
       - name: Run Tests
