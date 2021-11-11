@@ -49,7 +49,7 @@ jobs:
         env:
           DATABASE_URL: mysql://root:password@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/loic_k
       - name: Run PhpStan
-        run: phpstan analyse src --level max
+        run: ./vendor/bin/phpstan analyze src
       - name: Run Tests
         run: php bin/phpunit --coverage-clover coverage.xml
 
