@@ -49,7 +49,5 @@ jobs:
         env:
           DATABASE_URL: mysql://root:password@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/loic_k
       - name: Test codecov
-        script:
-          - vendor/bin/phpunit --coverage-clover coverage.xml
-        after_success:
-          - bash <(curl -s https://codecov.io/bash) || true 
+        run: vendor/bin/phpunit --coverage-clover coverage.xml
+        
