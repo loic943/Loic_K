@@ -8,8 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class UserRepositoryTest extends KernelTestCase
 {
-    private $em;
-
     public function testCompteUsers(): void
     {
         self::bootKernel();
@@ -23,14 +21,14 @@ class UserRepositoryTest extends KernelTestCase
     {
         self::bootKernel();
 
-        $this->em = static::getContainer()->get('doctrine')->getManager();
+        $em = static::getContainer()->get('doctrine')->getManager();
 
-        $admin = $this->em->getRepository(User::class)->findOneBy(['email' => 'admin@test.com']);
+        $admin = $em->getRepository(User::class)->findOneBy(['email' => 'admin@test.com']);
         $admin->setPassword('987654');
-        $this->em->persist($admin);
-        $this->em->flush();
+        $em->persist($admin);
+        $em->flush();
 
-        $newAdmin = $this->em->getRepository(User::class)->findOneBy(['email' => 'admin@test.com']);
+        $newAdmin = $em->getRepository(User::class)->findOneBy(['email' => 'admin@test.com']);
         $newPass = $newAdmin->getPassword();
 
         $this->assertTrue($newPass === '987654');

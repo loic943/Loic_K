@@ -20,12 +20,12 @@ class RegistrationControllerTest extends WebTestCase
     public function testEmailIsVerified(): void
     {
         $client = static::createClient();
-        $this->em = static::getContainer()->get('doctrine')->getManager();
-        $testUser = $this->em->getRepository(User::class) ->findOneByEmail('user@test.com');
+        $em = static::getContainer()->get('doctrine')->getManager();
+        $testUser = $em->getRepository(User::class) ->findOneByEmail('user@test.com');
 
         $testUser->setIsVerified(true);
-        $this->em->persist($testUser);
-        $this->em->flush();
+        $em->persist($testUser);
+        $em->flush();
 
         $crawler = $client->request('GET', '/verify/email');
 

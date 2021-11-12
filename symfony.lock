@@ -151,6 +151,15 @@
     "phpstan/phpstan": {
         "version": "1.1.2"
     },
+    "phpstan/phpstan-beberlei-assert": {
+        "version": "1.0.0"
+    },
+    "phpstan/phpstan-doctrine": {
+        "version": "1.0.1"
+    },
+    "phpstan/phpstan-phpunit": {
+        "version": "1.0.0"
+    },
     "phpstan/phpstan-symfony": {
         "version": "1.0.1"
     },

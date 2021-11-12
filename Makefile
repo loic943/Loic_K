@@ -6,3 +6,7 @@ tests:
 	symfony console doctrine:schema:update -f --env=test
 	symfony console doctrine:fixtures:load -n --env=test
 	symfony php bin/phpunit --testdox --coverage-html coverage
+
+.PHONY: analyse
+analyse:
+	php vendor/bin/phpstan analyse -c phpstan.neon
