@@ -2,8 +2,9 @@ parameters:
     level: 6 #  you can currently choose from 9 levels (0 is the loosest and 8 is the strictest). 
     symfony:
         container_xml_path: var/cache/dev/App_KernelDevDebugContainer.xml
+        console_application_loader: tests/console.php
     doctrine:
-        objectManagerLoader: tests/PHPStan/object-manager.php
+        objectManagerLoader: tests/object-manager.php
     paths:
         - src
         - tests

@@ -21,7 +21,7 @@ class RegistrationControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $em = static::getContainer()->get('doctrine')->getManager();
-        $testUser = $em->getRepository(User::class) ->findOneByEmail('user@test.com');
+        $testUser = $em->getRepository(User::class) ->findOneBy(['email' => 'user@test.com']);
 
         $testUser->setIsVerified(true);
         $em->persist($testUser);
@@ -38,7 +38,7 @@ class RegistrationControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $userRepository = static::getContainer()->get(UserRepository::class);
-        $testUser = $userRepository->findOneByEmail('user@test.com');
+        $testUser = $userRepository->findOneBy(['email' => 'user@test.com']);
 
         $testUser->setIsVerified(false);
 
