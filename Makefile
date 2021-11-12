@@ -11,3 +11,4 @@ tests:
 .PHONY: analyse
 analyse:
 	php vendor/bin/phpstan analyse -c phpstan.neon
+	php vendor/bin/phpcs

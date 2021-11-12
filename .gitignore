@@ -7,7 +7,7 @@
 /public/bundles/
 /var/
 /vendor/
-/coverage/*
+/coverage/
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
@@ -19,3 +19,8 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###
