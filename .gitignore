@@ -7,7 +7,7 @@
 /public/bundles/
 /var/
 /vendor/
-/coverage/
+/coverage/*
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
