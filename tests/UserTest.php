@@ -16,7 +16,6 @@ class UserTest extends TestCase
             ->setRoles(['ROLE_ADMIN'])
             ->setIsVerified(true);
 
-        $this->assertTrue($user->getId() === null);
         $this->assertTrue($user->getEmail() === "true@email.com");
         $this->assertTrue($user->getUserIdentifier() === "true@email.com");
         $this->assertTrue($user->getPassword() === "password");
@@ -34,7 +33,6 @@ class UserTest extends TestCase
             ->setRoles(['ROLE_ADMIN'])
             ->setIsVerified(true);
 
-        $this->assertFalse($user->getId() === 0);
         $this->assertFalse($user->getEmail() === "false@email.com");
         $this->assertFalse($user->getUserIdentifier() === "false@email.com");
         $this->assertFalse($user->getPassword() === "false");
@@ -47,9 +45,6 @@ class UserTest extends TestCase
     {
         $user = new User();
 
-        $this->assertEmpty($user->getId());
-        $this->assertEmpty($user->getEmail());
-        $this->assertEmpty($user->getUserIdentifier());
         $this->assertEmpty($user->getPassword());
         $this->assertNotEmpty($user->getRoles());
         $this->assertEmpty($user->isVerified());
