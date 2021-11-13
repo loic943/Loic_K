@@ -39,6 +39,15 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Composer Install
         run: composer install --no-progress --prefer-dist --optimize-autoloader
+      - name: Use node 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org
+      - name: install npm
+        run: npm install
+      - name: build
+        run: npm run buid
       - name: Run Migration & Load Fixtures
         run: |
           composer require --dev symfony/orm-pack
