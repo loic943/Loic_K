@@ -43,7 +43,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private bool $isVerified = false;
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }

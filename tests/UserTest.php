@@ -45,6 +45,7 @@ class UserTest extends TestCase
     {
         $user = new User();
 
+        $this->assertEmpty($user->getId());
         $this->assertEmpty($user->getPassword());
         $this->assertNotEmpty($user->getRoles());
         $this->assertEmpty($user->isVerified());
