@@ -46,9 +46,7 @@ jobs:
           registry-url: https://registry.npmjs.org
       - name: install npm
         run: npm install
-      - name: Build Webpack File
-        run: |
-          bundle exec rake webpack:build:production
+      - run: npm ci
       - name: Run Migration & Load Fixtures
         run: |
           composer require --dev symfony/orm-pack
