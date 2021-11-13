@@ -47,6 +47,7 @@ jobs:
       - name: install npm
         run: npm install
       - run: npm ci
+      - run: npm run build
       - name: Run Migration & Load Fixtures
         run: |
           composer require --dev symfony/orm-pack
