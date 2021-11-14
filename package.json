@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "@symfony/stimulus-bridge": "^2.0.2",
     "@symfony/webpack-encore": "^1.6.1",
     "bootstrap": "^5.1.3",
