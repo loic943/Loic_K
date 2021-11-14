@@ -21,7 +21,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
-    "file-loader": "^6.2.0"
+    "file-loader": "^6.2.0",
+    "popper.js": "^1.16.1"
   },
   "browserslist": [
     "defaults"
