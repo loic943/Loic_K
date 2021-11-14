@@ -1,2 +1,12 @@
 @import "custom";
 @import "~bootstrap/scss/bootstrap";
+
+// Importation de font awesome
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+// Importation de Fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
